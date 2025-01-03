@@ -2,5 +2,10 @@
 name = "boilrs"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+description = "A fast rust CLI program to generate boilerplate code for programming languages"
+readme = "README.md"
+homepage = "https://github.com/smit4k/boilrs"
+repository = "https://github.com/smit4k/boilrs"
 
 [dependencies]
