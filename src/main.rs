@@ -80,7 +80,7 @@ fn go_boilerplate() -> String {
 import "fmt"
 
 func main() {
-    fmt.Println("Hello world")
+    fmt.Println("Hello, world!")
 }"#
     .to_string()
 }
@@ -89,7 +89,7 @@ fn cpp_boilerplate() -> String {
     r#"#include <iostream>
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    std::cout << "Hello, world!" << std::endl;
     return 0;
 }
     "#
