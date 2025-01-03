@@ -3,7 +3,7 @@ use std::io::{self, Write};
 
 fn main() {
     println!("Boilrs --- A boilerplate generator written in Rust");
-    println!("Supported languages: Rust, Python, Javascript");
+    println!("Supported languages: Rust, Python, Javascript, Java");
     println!("Enter the language you would want to generate boilerplate code for:");
 
     let mut lang = String::new();
@@ -14,6 +14,7 @@ fn main() {
         "rust" => rust_boilerplate(),
         "python" => python_boilerplate(),
         "javascript" => javascript_boilerplate(),
+        "java" => java_boilerplate(),
 
         _ => {
             println!("Unsupported language");
@@ -53,11 +54,21 @@ fn javascript_boilerplate() -> String {
     .to_string()
 }
 
+fn java_boilerplate() -> String {
+    r#"public class Main {
+        public static void main(String[] args) {
+            System.out.println("Hello, world!");
+        }
+}"#
+    .to_string()
+}
+
 fn save_to_file(lang: &str, content: &str){
     let filename = format!("boilerplate.{}", match lang {
         "rust" => "rs",
         "python" => "py",
         "javascript" => "js",
+        "java" => ".java",
 
         _ => "txt",
 
