@@ -4,7 +4,7 @@ use std::path::Path;
 
 fn main() {
     println!("Boilrs --- A boilerplate generator written in Rust");
-    println!("Supported languages: Rust, C++, Python, Javascript, Java, Go,");
+    println!("Supported languages: Rust, C++, Python, Javascript, Java, C#, Go,");
     println!("Enter the language you would want to generate boilerplate code for:");
 
     let mut lang = String::new();
@@ -18,6 +18,7 @@ fn main() {
         "java" => java_boilerplate(),
         "go" => go_boilerplate(),
         "c++" => cpp_boilerplate(),
+        "c#" => cs_boilerplate(),
 
         _ => {
             println!("Unsupported language");
@@ -68,6 +69,11 @@ fn java_boilerplate() -> String {
     .to_string()
 }
 
+fn cs_boilerplate() -> String {
+    r#"Console.WriteLine("Hello, world!")"#
+    .to_string()
+}
+
 fn go_boilerplate() -> String {
     r#"package main
 
@@ -112,6 +118,7 @@ fn save_to_custom_directory_or_default(lang: &str, content: &str) {
         "rust" => "rs",
         "python" => "py",
         "javascript" => "js",
+        "c#" => "cs",
         "go" => "go",
         "c++" => "cpp",
         _ => "txt",
