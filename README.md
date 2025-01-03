@@ -12,3 +12,4 @@ Boilrs is a fast rust CLI program made in Rust to generate boilerplate code for 
 ## Todos
 - [ ] add support for more languages
 - [ ] save file under different filename
+- [ ] save file under different directory
