@@ -1,6 +1,6 @@
 [package]
 name = "boilrs"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2021"
 license = "MIT"
 description = "A fast rust CLI program to generate boilerplate code for programming languages"
@@ -14,3 +14,4 @@ repository = "https://github.com/smit4k/boilrs"
 [[bin]]
 name = "boilrs"
 path = "src/main.rs"
+
