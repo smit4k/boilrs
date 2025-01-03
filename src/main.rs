@@ -1,5 +1,5 @@
 use std::fs;
-use std::io::{self, Write};
+use std::io::{self};
 
 fn main() {
     println!("Boilrs --- A boilerplate generator written in Rust");
