@@ -7,6 +7,7 @@ Boilrs is a fast rust CLI program made in Rust to generate boilerplate code for 
 - Javascript
 - Java
 - Go
+- C++
 - more to come...
 
 ## Todos
