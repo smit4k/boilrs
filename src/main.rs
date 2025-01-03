@@ -118,6 +118,7 @@ fn save_to_custom_directory_or_default(lang: &str, content: &str) {
         "rust" => "rs",
         "python" => "py",
         "javascript" => "js",
+        "java" => "java",
         "c#" => "cs",
         "go" => "go",
         "c++" => "cpp",
