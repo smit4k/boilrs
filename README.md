@@ -15,3 +15,10 @@ Boilrs is a fast rust CLI program made in Rust to generate boilerplate code for 
 - [ ] add support for more languages
 - [ ] save file under different filename
 - [x] save file under different directory
+
+
+> [!IMPORTANT]
+> To execute the CLI program, you must make sure you have cargo binaries in your $PATH
+> 
+> For Linux, you can check the path with ```echo $PATH```
+> If it is not in the path, you can add cargo binaries to the path by doing ```export PATH="$HOME/.cargo/bin:$PATH"```
