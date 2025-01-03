@@ -11,6 +11,8 @@ fn main() {
     io::stdin().read_line(&mut lang).unwrap();
     let lang = lang.trim().to_lowercase();
 
+
+    // matching languages to their respective generating boilerplate function
     let boilerplate = match lang.as_str(){
         "rust" => rust_boilerplate(),
         "python" => python_boilerplate(),
@@ -27,9 +29,15 @@ fn main() {
         
     };
 
+    // Prints the generated boilerplate to CLI
     println!("\nGenerated boilerplate:\n\n{boilerplate}\n");
-    println!("Would you like to save it as a file? (yes/y) / no");
 
+    println!("Would you like to save it as a file? (yes/y) / no");
+    /* 
+    If the user would like to save the boilerplate as a file,
+    if none is provided, it saves to the current directory.
+    If user does not want to save to a directory, the code is not saved and the program ends.
+    */
     let mut save = String::new();
     io::stdin().read_line(&mut save).unwrap();
 
@@ -42,6 +50,8 @@ fn main() {
     }
 }
 
+
+// Boilerplate generators
 fn rust_boilerplate() -> String {
     r#"fn main() {
     println!("Hello, world!");
@@ -96,6 +106,11 @@ int main() {
     .to_string()
 }
 
+/*
+Function to save to a specific directory.
+Writes to a file under the filename extension associated with the language (c# => .cs, python => .py, etc.)
+If path is invalid, it stops.
+*/ 
 
 fn save_to_custom_directory_or_default(lang: &str, content: &str) {
     println!("Enter the directory where you want to save the file (press Enter for current directory):");
