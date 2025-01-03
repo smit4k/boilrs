@@ -1,5 +1,6 @@
 use std::fs;
 use std::io::{self};
+use std::path::Path;
 
 fn main() {
     println!("Boilrs --- A boilerplate generator written in Rust");
@@ -33,7 +34,9 @@ fn main() {
     let save = save.trim().to_lowercase();
 
     if save == "yes" || save == "y" {
-        save_to_file(&lang, &boilerplate);
+        save_to_custom_directory_or_default(&lang, &boilerplate);
+    } else {
+        println!("Boilerplate was not saved.");
     }
 }
 
@@ -75,18 +78,36 @@ func main() {
     .to_string()
 }
 
-fn save_to_file(lang: &str, content: &str){
+
+fn save_to_custom_directory_or_default(lang: &str, content: &str) {
+    println!("Enter the directory where you want to save the file (press Enter for current directory):");
+    let mut directory = String::new();
+    io::stdin().read_line(&mut directory).unwrap();
+    let directory = directory.trim();
+
+    let path = if directory.is_empty() {
+        Path::new(".").to_path_buf()
+    } else {
+        let path = Path::new(directory);
+        if !path.is_dir() {
+            println!("Invalid directory. Please make sure the path exists.");
+            return;
+        }
+        path.to_path_buf()
+    };
+
     let filename = format!("boilerplate.{}", match lang {
         "rust" => "rs",
         "python" => "py",
         "javascript" => "js",
-        "java" => ".java",
-        "go" => ".go",
-
+        "go" => "go",
         _ => "txt",
-
     });
 
-    fs::write(&filename, content).expect("Failed to save file");
-    println!("Boilerplate was saved to {filename}");
+    let filepath = path.join(filename);
+
+    match fs::write(&filepath, content) {
+        Ok(_) => println!("Boilerplate was saved to {}", filepath.display()),
+        Err(e) => println!("Failed to save file: {}", e),
+    }
 }
