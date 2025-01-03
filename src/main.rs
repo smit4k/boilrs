@@ -24,7 +24,7 @@ fn main() {
         
     };
 
-    println!("Generated boilerplate:\n\n{boilerplate}");
+    println!("\nGenerated boilerplate:\n\n{boilerplate}\n");
     println!("Would you like to save it as a file? (yes/y) / no");
 
     let mut save = String::new();
