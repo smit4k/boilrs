@@ -23,12 +23,14 @@ fn main() {
     };
 
     println!("Generated boilerplate:\n\n{boilerplate}");
-    println!("Would you like to save it as a file? (yes/no)");
+    println!("Would you like to save it as a file? (yes/y) / no");
 
     let mut save = String::new();
     io::stdin().read_line(&mut save).unwrap();
 
-    if save.trim().eq_ignore_ascii_case("yes") {
+    let save = save.trim().to_lowercase();
+
+    if save == "yes" || save == "y" {
         save_to_file(&lang, &boilerplate);
     }
 }
