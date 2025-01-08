@@ -19,6 +19,8 @@ Boilrs is a blazingly fast Rust CLI program made in Rust to generate boilerplate
 - [x] save file under different directory
 
 
+## Executing
+
 > [!IMPORTANT]
 > To execute the CLI program, you must make sure you have cargo binaries in your $PATH
 > 
