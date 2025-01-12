@@ -5,7 +5,7 @@ use std::path::Path;
 fn main() {
     println!("Boilrs --- A boilerplate generator written in Rust");
     println!(
-        "Supported languages: Rust, C++, Python, Javascript, Java, Kotlin, C#, Go, Ruby, Haskell"
+        "Supported languages: Rust, C++, Python, Lua, Javascript, Java, Kotlin, C#, Go, Ruby, Haskell"
     );
     println!("Enter the language you would want to generate boilerplate code for:");
 
@@ -17,6 +17,7 @@ fn main() {
     let boilerplate = match lang.as_str() {
         "rust" => rust_boilerplate(),
         "python" => python_boilerplate(),
+        "lua" => lua_boilerplate(),
         "javascript" => javascript_boilerplate(),
         "java" => java_boilerplate(),
         "kotlin" => kotlin_boilerplate(),
@@ -121,6 +122,11 @@ fn kotlin_boilerplate() -> String {
     .to_string()
 }
 
+fn lua_boilerplate() -> String {
+    r#"print("Hello, world!)"#
+    .to_string()
+}
+
 /*
 Function to save to a specific directory.
 Writes to a file under the filename extension associated with the language (c# => .cs, python => .py, etc.)
@@ -151,6 +157,7 @@ fn save_to_custom_directory_or_default(lang: &str, content: &str) {
         match lang {
             "rust" => "rs",
             "python" => "py",
+            "lua" => "lua",
             "javascript" => "js",
             "java" => "java",
             "kotlin" => "kt",
