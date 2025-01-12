@@ -112,12 +112,12 @@ fn ruby_boilerplate() -> String {
 }
 
 fn haskell_boilerplate() -> String {
-    r#"main = putStrLn "Hello, World!""#.to_string()
+    r#"main = putStrLn "Hello, world!""#.to_string()
 }
 
 fn kotlin_boilerplate() -> String {
     r#"fun main(args : Array<String>) {
-        println("Hello, World!")
+        println("Hello, world!")
     }"#
     .to_string()
 }
