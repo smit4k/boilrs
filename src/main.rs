@@ -5,7 +5,7 @@ use std::path::Path;
 fn main() {
     println!("Boilrs --- A boilerplate generator written in Rust");
     println!(
-        "Supported languages: Rust, C++, Python, Lua, Javascript, Java, Kotlin, C#, Go, Ruby, Haskell"
+        "Supported languages: Rust, C, C++, Python, Lua, Javascript, Java, Kotlin, C#, Go, Ruby, Haskell"
     );
     println!("Enter the language you would want to generate boilerplate code for:");
 
@@ -22,6 +22,7 @@ fn main() {
         "java" => java_boilerplate(),
         "kotlin" => kotlin_boilerplate(),
         "go" => go_boilerplate(),
+        "c" => c_boilerplate(),
         "c++" => cpp_boilerplate(),
         "c#" => cs_boilerplate(),
         "ruby" => ruby_boilerplate(),
@@ -123,7 +124,16 @@ fn kotlin_boilerplate() -> String {
 }
 
 fn lua_boilerplate() -> String {
-    r#"print("Hello, world!)"#
+    r#"print("Hello, world!)"#.to_string()
+}
+
+fn c_boilerplate() -> String {
+    r#"#include <stdio.h>
+
+    int main() {
+        printf("Hello, World!\n");
+        return 0;
+    }"#
     .to_string()
 }
 
@@ -163,6 +173,7 @@ fn save_to_custom_directory_or_default(lang: &str, content: &str) {
             "kotlin" => "kt",
             "c#" => "cs",
             "go" => "go",
+            "c" => "c",
             "c++" => "cpp",
             "ruby" => "rb",
             "haskell" => "hs",
