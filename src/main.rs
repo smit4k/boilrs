@@ -4,20 +4,22 @@ use std::path::Path;
 
 fn main() {
     println!("Boilrs --- A boilerplate generator written in Rust");
-    println!("Supported languages: Rust, C++, Python, Javascript, Java, C#, Go, Ruby, Haskell");
+    println!(
+        "Supported languages: Rust, C++, Python, Javascript, Java, Kotlin, C#, Go, Ruby, Haskell"
+    );
     println!("Enter the language you would want to generate boilerplate code for:");
 
     let mut lang = String::new();
     io::stdin().read_line(&mut lang).unwrap();
     let lang = lang.trim().to_lowercase();
 
-
     // matching languages to their respective generating boilerplate function
-    let boilerplate = match lang.as_str(){
+    let boilerplate = match lang.as_str() {
         "rust" => rust_boilerplate(),
         "python" => python_boilerplate(),
         "javascript" => javascript_boilerplate(),
         "java" => java_boilerplate(),
+        "kotlin" => kotlin_boilerplate(),
         "go" => go_boilerplate(),
         "c++" => cpp_boilerplate(),
         "c#" => cs_boilerplate(),
@@ -28,14 +30,13 @@ fn main() {
             println!("Unsupported language");
             return;
         }
-        
     };
 
     // Prints the generated boilerplate to CLI
     println!("\nGenerated boilerplate:\n\n{boilerplate}\n");
 
     println!("Would you like to save it as a file? (yes/y) / no");
-    /* 
+    /*
     If the user would like to save the boilerplate as a file,
     if none is provided, it saves to the current directory.
     If user does not want to save to a directory, the code is not saved and the program ends.
@@ -52,7 +53,6 @@ fn main() {
     }
 }
 
-
 // Boilerplate generators
 fn rust_boilerplate() -> String {
     r#"fn main() {
@@ -68,8 +68,7 @@ fn python_boilerplate() -> String {
 }
 
 fn javascript_boilerplate() -> String {
-    r#"console.log("Hello, world!");"#
-    .to_string()
+    r#"console.log("Hello, world!");"#.to_string()
 }
 
 fn java_boilerplate() -> String {
@@ -82,8 +81,7 @@ fn java_boilerplate() -> String {
 }
 
 fn cs_boilerplate() -> String {
-    r#"Console.WriteLine("Hello, world!")"#
-    .to_string()
+    r#"Console.WriteLine("Hello, world!")"#.to_string()
 }
 
 fn go_boilerplate() -> String {
@@ -109,24 +107,30 @@ int main() {
 }
 
 fn ruby_boilerplate() -> String {
-    r#"puts "Hello, world!"#
-    .to_string()
+    r#"puts "Hello, world!"#.to_string()
 }
 
 fn haskell_boilerplate() -> String {
-    r#"main = putStrLn "Hello, World!""#
-    .to_string()
+    r#"main = putStrLn "Hello, World!""#.to_string()
 }
 
+fn kotlin_boilerplate() -> String {
+    r#"fun main(args : Array<String>) {
+        println("Hello, World!")
+    }"#
+    .to_string()
+}
 
 /*
 Function to save to a specific directory.
 Writes to a file under the filename extension associated with the language (c# => .cs, python => .py, etc.)
 If path is invalid, it stops.
-*/ 
+*/
 
 fn save_to_custom_directory_or_default(lang: &str, content: &str) {
-    println!("Enter the directory where you want to save the file (press Enter for current directory):");
+    println!(
+        "Enter the directory where you want to save the file (press Enter for current directory):"
+    );
     let mut directory = String::new();
     io::stdin().read_line(&mut directory).unwrap();
     let directory = directory.trim();
@@ -142,18 +146,22 @@ fn save_to_custom_directory_or_default(lang: &str, content: &str) {
         path.to_path_buf()
     };
 
-    let filename = format!("boilerplate.{}", match lang {
-        "rust" => "rs",
-        "python" => "py",
-        "javascript" => "js",
-        "java" => "java",
-        "c#" => "cs",
-        "go" => "go",
-        "c++" => "cpp",
-        "ruby" => "rb",
-        "haskell" => "hs",
-        _ => "txt",
-    });
+    let filename = format!(
+        "boilerplate.{}",
+        match lang {
+            "rust" => "rs",
+            "python" => "py",
+            "javascript" => "js",
+            "java" => "java",
+            "kotlin" => "kt",
+            "c#" => "cs",
+            "go" => "go",
+            "c++" => "cpp",
+            "ruby" => "rb",
+            "haskell" => "hs",
+            _ => "txt",
+        }
+    );
 
     let filepath = path.join(filename);
 
