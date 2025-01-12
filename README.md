@@ -1,5 +1,5 @@
 # Overview
-Boilrs is a blazingly fast Rust CLI program made in Rust to generate boilerplate code for programming languages
+Boilrs is a blazingly fast 🚀 Rust CLI program made in Rust to generate boilerplate code for programming languages
 
 ## Supported languages
 - Rust
