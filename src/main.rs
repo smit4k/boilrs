@@ -5,7 +5,7 @@ use std::path::Path;
 fn main() {
     println!("Boilrs --- A boilerplate generator written in Rust");
     println!(
-        "Supported languages: Rust, C, C++, Python, Lua, Javascript, Java, Kotlin, C#, Go, Ruby, Haskell, Zig"
+        "Supported languages: Rust, C, C++, Python, Lua, Javascript, HTML, Java, Kotlin, C#, Go, Ruby, Haskell, Zig"
     );
     println!("Enter the language you would want to generate boilerplate code for:");
 
@@ -19,6 +19,7 @@ fn main() {
         "python" => python_boilerplate(),
         "lua" => lua_boilerplate(),
         "javascript" => javascript_boilerplate(),
+        "html" => html_boilerplate(),
         "java" => java_boilerplate(),
         "kotlin" => kotlin_boilerplate(),
         "go" => go_boilerplate(),
@@ -147,6 +148,23 @@ fn zig_boilerplate() -> String {
     .to_string()
 }
 
+fn html_boilerplate() -> String {
+    r#"<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <script src="index.js"></script>
+  </body>
+</html>"#
+.to_string()
+}
+
 /*
 Function to save to a specific directory.
 Writes to a file under the filename extension associated with the language (c# => .cs, python => .py, etc.)
@@ -179,6 +197,7 @@ fn save_to_custom_directory_or_default(lang: &str, content: &str) {
             "python" => "py",
             "lua" => "lua",
             "javascript" => "js",
+            "html" => "html",
             "java" => "java",
             "kotlin" => "kt",
             "c#" => "cs",
