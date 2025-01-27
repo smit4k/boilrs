@@ -4,13 +4,16 @@ Boilrs is a blazingly fast 🚀 Rust CLI program made in Rust to generate boiler
 ## Supported languages
 - Rust
 - Python
+- Lua
 - Javascript
 - Java
+- Kotlin
 - C#
 - Go
 - C++
 - Ruby
 - Haskell
+- Zig
 - more to come...
 
 ## Todos
